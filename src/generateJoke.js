@@ -1,5 +1,15 @@
-const joke = () => {
-  return "Why isnt there a pregnant barbie doll, becuase ken came in a different box"
+import axios from 'axios'
+
+function generateJoke() {
+  const config = {
+    headers: {
+      Accept: 'application/json',
+    },
+  }
+
+  axios.get('https://icanhazdadjoke.com', config).then((res) => {
+    document.getElementById('joke').innerHTML = res.data.joke
+  })
 }
 
-export default joke;
+export default generateJoke
